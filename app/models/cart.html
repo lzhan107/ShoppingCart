@@ -1,0 +1,116 @@
+<div ng-controller="CartController">
+    <div class="text-info">
+        <p>My shopping cart</p>
+    </div>
+
+    <div class="container-fluid">
+        <div class="col-lg-9">
+            <table class="table table-bordered">
+                <tr class="well">
+                    <td>Item</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="product in store.userProducts">
+                    <td>{{product.name}}</td>
+                    <td>{{product.price | currency}}</td>
+                    <td class="text-center">
+                        <div class="col-sm-2">
+                            <div class="input-group" style="width: 150px;">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"
+                                            ng-click="changeQuantityClick(product.sku, product.price, 'increase')"
+                                            ng-disabled="product.checkedQuantity == product.quantity">+
+                                    </button>
+                                </span>
+                                <input type="text" class="form-control" value="{{product.checkedQuantity}}"
+                                       style="height: 30px">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"
+                                            ng-click="changeQuantityClick(product.sku, product.price, 'decrease')"
+                                            ng-disabled="product.checkedQuantity == 0">-
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="button" class="btn btn-primary" value="Remove"
+                               ng-click="removeFromCartClick(product)"/></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td class="pull-right">{{cart.total | currency}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-sm-pull-3">
+            <a href="#">
+                <input type="button" class="btn btn-primary" style="width: 200px" ng-click="backToStoreClick()"
+                       value="Back to store">
+            </a>
+        </div>
+        <div class="col-sm-pull-3">
+            <input type="button" class="btn btn-warning" style="width: 200px" ng-click="clearCartClick()"
+                   value="Clear my cart">
+        </div>
+        <div class="col-sm-pull-3">
+            <input type="button" class="btn btn-info" style="width: 200px" ng-click="orderSummaryClick()"
+                   value="Order summary">
+        </div>
+        <div class="col-sm-pull-3">
+            <div collapse="isCollapsed" style="width: 200px">
+                <div ng-hide="orderSummaryPanelHide">
+                    <p>
+                        <b>Your order summary</b>
+                    </p>
+
+                    <p>
+                    <table style="width: 199px">
+                        <tr>
+                            <td>
+                                Items
+                            </td>
+                            <td class="pull-right">
+                                {{cart.total | currency}}
+                            </td>
+                        </tr>
+                    </table>
+                    </p>
+                    <p>
+                    <table style="width: 199px">
+                        <tr>
+                            <td>
+                                Shipping
+                            </td>
+                            <td class="pull-right">
+                                {{cart.standardShippingPrice | currency}}
+                            </td>
+                        </tr>
+                    </table>
+                    </p>
+                    <hr/>
+                    <p>
+                    <table style="width: 199px">
+                        <tr>
+                            <td>
+                                Total
+                            </td>
+                            <td class="pull-right">
+                                {{cart.total + cart.standardShippingPrice | currency}}
+                            </td>
+                        </tr>
+                    </table>
+                    </p>
+                    <button type="button" class="btn btn-info pull-right" ng-click="checkoutClick()">Checkout</button>
+                </div>
+                <div ng-hide="!orderSummaryPanelHide">
+                    <p style="color: red">Your cart is empty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

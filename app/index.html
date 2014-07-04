@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="store">
+
+<head>
+    <link href="scripts/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/app.css" rel="stylesheet" type="text/css">
+    <link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+</head>
+
+<body class="container" ng-controller="MainCtrl" style="width: 1000px">
+<div>
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#/cart">My Cart</a></li>
+            <li><a href="#">Log out</a></li>
+        </ul>
+        <h3 class="text-muted">My Store</h3>
+    </div>
+
+    <div class="text-info">
+        <p>
+            Welcome to AngularJS store.
+        </p>
+    </div>
+    <div class="container" style="width: 1000px">
+        <div ng-view=""></div>
+    </div>
+
+    <div class="footer panel-footer navbar-fixed-bottom center-block" style="width: 1000px">
+        <p>&copy; Shopping Cart Application</p>
+    </div>
+
+</div> <!-- /container -->
+    <script src="scripts/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/jquery/jquery-1.9.1.js"></script>
+    <script src="scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="scripts/angular/angular-route-1.2.0.js"></script>
+    <script src="scripts/angular/angular-resource.min.js"></script>
+    <!--<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>-->
+    <script src="scripts/angular-ui/ui-bootstrap-tpls-0.10.0.min.js"></script>
+    <script src="models/StoreController.js"></script>
+    <script src="models/CartController.js"></script>
+    <script src="models/ProductController.js"></script>
+    <script src="models/LoginController.js"></script>
+    <script src="models/DialogController.js"></script>
+    <script src="models/MainCtrl.js"></script>
+    <script src="service/StoreService.js"></script>
+    <script src="service/UserService.js"></script>
+    <script src="service/dialog.js"></script>
+</body>
+
+</html>

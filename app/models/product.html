@@ -1,0 +1,50 @@
+<div ng-controller="ProductController">
+    <div class="text-info">
+        <p>{{product.name}}</p>
+    </div>
+    <table class="table table-bordered">
+        <tr class="well">
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>Product name</td>
+            <td>
+                {{product.name}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Product description
+            </td>
+            <td>
+                {{product.description}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Quantity
+            </td>
+            <td>
+                {{product.quantity}}
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>{{product.price | currency}}</td>
+        </tr>
+        <tr>
+            <td>Color</td>
+            <td>{{product.color}}</td>
+        </tr>
+        <tr>
+            <td>Rating</td>
+            <td>
+                <!--{{product.rating}}-->
+                <span ng-repeat="n in [] | range:5 : product.rating">
+                    <i class="icon-star" ng-show="n == 1"></i>
+                    <i class="icon-star-empty" ng-show="n == 0"></i>
+                </span>
+            </td>
+        </tr>
+    </table>
+</div>
